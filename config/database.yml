@@ -9,17 +9,17 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+default: &default 
+  adapter: mysql2 
+  encoding: utf8 
+  pool: 5 
+  username: root  
+  password: 
+  socket: /var/run/mysqld/mysqld.sock  
 
 development:
-  <<: *default
-  database: message-board_development
+  <<: *default  
+  database: message-board_development  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: message-board_production
-  username: message-board
-  password: <%= ENV['MESSAGE-BOARD_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5  
+  database: message-board_production  
+  username: message-board  
+  password: <%= ENV['MESSAGE-BOARD_DATABASE_PASSWORD'] %> 
